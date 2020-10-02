@@ -23,4 +23,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
+const planta = require('./routes/planta')
+app.use('/planta', planta)
+
 module.exports = app;
