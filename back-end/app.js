@@ -32,4 +32,13 @@ app.use('/embalagem', embalagem)
 const acessorio = require('./routes/acessorio')
 app.use('/acessorio', acessorio)
 
+const pedido = require('./routes/pedido')
+app.use('/pedido', pedido)
+
+const pagamento = require('./routes/pagamento')
+app.use('/pagamento', pagamento)
+
+const operador = require('./routes/operador')
+app.use('/operador', operador)
+
 module.exports = app;
