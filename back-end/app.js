@@ -26,4 +26,10 @@ app.use('/users', usersRouter);
 const planta = require('./routes/planta')
 app.use('/planta', planta)
 
+const embalagem = require('./routes/embalagem')
+app.use('/embalagem', embalagem)
+
+const acessorio = require('./routes/acessorio')
+app.use('/acessorio', acessorio)
+
 module.exports = app;
