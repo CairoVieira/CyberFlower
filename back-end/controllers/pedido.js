@@ -5,17 +5,22 @@ const controller = {}
 
 controller.novo = async (req, res) => {
     try {
-        console.log("1.0- ")
-        req.body.item_pedido.forEach(item => {
+        let pedido = {
+            codigo: req.body.codigo,
+            data_hora: req.body.data_hora,
+            valor_total: req.body.valor_total,
+            item_pedido: []
+        }
+
+        await Promise.all(req.body.item_pedido.map(async (item) => {
             const r = {
                 body: item
             }
-            console.log("1.1- ")
-            item_pedido.novo(r, res)
-            console.log("1.2- ")
-        });
-        //console.log("1.0- ", req.body)
-        //await Pedido.create(req.body)
+            const id = await item_pedido.novo(r, res)
+            pedido.item_pedido.push(id)
+        }))
+
+        await Pedido.create(pedido)
         res.status(201).end()
     }
     catch (erro) {
@@ -26,9 +31,32 @@ controller.novo = async (req, res) => {
 
 controller.listar = async (req, res) => {
     try {
-        let dados = await Pedido.find()
-            .populate('item_pedido')
+        let dados = await Pedido.find({})
+            .populate({
+                path: 'item_pedido',
+                populate: {
+                    path: 'planta',
+                    model: 'Planta'
+                }
+            })
+            .populate({
+                path: 'item_pedido',
+                populate: {
+                    path: 'embalagem',
+                    model: 'Embalagem'
+                }
+            })
+            .populate({
+                path: 'item_pedido',
+                populate: {
+                    path: 'acessorio',
+                    model: 'Acessorio'
+                }
+            })
+          
         res.send(dados)
+
+  
     }
     catch (erro) {
         console.error(erro)
@@ -38,14 +66,35 @@ controller.listar = async (req, res) => {
 
 controller.obterUm = async (req, res) => {
     const id = req.params.id
-    let obj = await Pedido.findById(id)
+    let obj = await Pedido.findById(id).populate({
+        path: 'item_pedido',
+        populate: {
+            path: 'planta',
+            model: 'Planta'
+        }
+    })
+    .populate({
+        path: 'item_pedido',
+        populate: {
+            path: 'embalagem',
+            model: 'Embalagem'
+        }
+    })
+    .populate({
+        path: 'item_pedido',
+        populate: {
+            path: 'acessorio',
+            model: 'Acessorio'
+        }
+    })
 
     if (obj) res.send(obj)
     else res.status(404).end()
 
 }
 
-controller.atualizar = async (req, res) => {
+// Não há necessidade de atualização pois o pedido só será criado, listado ou excluído
+/*controller.atualizar = async (req, res) => {
     try {
         const id = req.body._id
         let obj = await Pedido.findByIdAndUpdate(id, req.body)
@@ -57,10 +106,18 @@ controller.atualizar = async (req, res) => {
         console.error(erro)
         res.status(500).end()
     }
-}
+}*/
 
 controller.excluir = async (req, res) => {
     try {
+
+        await Promise.all(req.body.item_pedido.map(async (item) => {
+            const r = {
+                body: item
+            }
+            await item_pedido.excluir(r, res)
+        }) ) 
+
         const id = req.body._id
         let obj = await Pedido.findByIdAndDelete(id)
 

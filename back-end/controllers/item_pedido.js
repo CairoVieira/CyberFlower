@@ -4,10 +4,8 @@ const controller = {}
 
 controller.novo = async (req, res) => {
     try {
-        console.log("2.0- ")
-        await Item_pedido.create(req.body)
-        console.log("2.1- ", res)
-        res.status(201).end()
+        const item = await Item_pedido.create(req.body)
+        return item.id
     }
     catch (erro) {
         console.error(erro)

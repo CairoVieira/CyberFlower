@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-//const AutoIncrement = require('mongoose-sequence')(mongoose)
+var autoIncrement = require('mongoose-auto-increment')
 
 const esquema = mongoose.Schema({
     codigo: { type: Number, required: true, index: { unique: true} },
@@ -8,6 +8,7 @@ const esquema = mongoose.Schema({
     valor_total: { type: Number, required: true, default: 0}
 })
 
-// esquema.plugin(AutoIncrement, {id:'codigo_seq',inc_field: 'codigo'})
+autoIncrement.initialize(mongoose.connection);
+esquema.plugin(autoIncrement.plugin, { model: 'Pedido', field: 'codigo' });
 
 module.exports = mongoose.model('Pedido', esquema, 'pedidos')

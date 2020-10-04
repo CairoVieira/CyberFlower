@@ -3,7 +3,9 @@ const mongoose = require ('mongoose')
 module.exports = uri => {
     mongoose.connect(uri,{
         useNewUrlParser: true,
-        useUnifiedTopology: true
+        useUnifiedTopology: true,
+        useFindAndModify: false,
+        useCreateIndex: true
     })
 
     mongoose.connection.on('connected', () => 
