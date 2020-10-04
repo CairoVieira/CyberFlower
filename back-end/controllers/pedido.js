@@ -1,10 +1,21 @@
 const Pedido = require('../models/Pedido')
+const item_pedido = require('./item_pedido')
 
 const controller = {}
 
 controller.novo = async (req, res) => {
     try {
-        await Pedido.create(req.body)
+        console.log("1.0- ")
+        req.body.item_pedido.forEach(item => {
+            const r = {
+                body: item
+            }
+            console.log("1.1- ")
+            item_pedido.novo(r, res)
+            console.log("1.2- ")
+        });
+        //console.log("1.0- ", req.body)
+        //await Pedido.create(req.body)
         res.status(201).end()
     }
     catch (erro) {
@@ -16,6 +27,7 @@ controller.novo = async (req, res) => {
 controller.listar = async (req, res) => {
     try {
         let dados = await Pedido.find()
+            .populate('item_pedido')
         res.send(dados)
     }
     catch (erro) {

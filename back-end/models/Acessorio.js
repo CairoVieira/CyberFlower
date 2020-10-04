@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const esquema = mongoose.Schema({
-    codigo: { type: Number, required: true },
+    codigo: { type: Number, required: true, index: { unique: true} },
     nome: { type: String, required: true},
     tipo: { type: String, required: true},
     cor: {type: String},
