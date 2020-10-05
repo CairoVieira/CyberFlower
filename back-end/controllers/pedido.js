@@ -116,13 +116,15 @@ controller.excluir = async (req, res) => {
                 body: item
             }
             await item_pedido.excluir(r, res)
-        }) ) 
-
-        const id = req.body._id
-        let obj = await Pedido.findByIdAndDelete(id)
-
-        if(obj) res.status(204).end()
-        else res.status(404).end()
+        }))
+        .then (async result => {
+            const id = req.body._id
+            let obj = await Pedido.findByIdAndDelete(id)
+    
+            if(obj) res.status(204).end()
+            else res.status(404).end()
+        })
+        .catch(erro => res.status(500).send(erro)) 
     }
     catch (erro) {
         console.error(erro)

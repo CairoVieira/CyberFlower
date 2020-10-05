@@ -16,6 +16,7 @@ controller.novo = async (req, res) => {
 controller.listar = async (req, res) => {
     try {
         let dados = await Pagamento.find()
+            .populate('pedido', 'codigo data_hora valor_total')
         res.send(dados)
     }
     catch (erro) {
@@ -33,7 +34,7 @@ controller.obterUm = async (req, res) => {
 
 }
 
-controller.atualizar = async (req, res) => {
+/*controller.atualizar = async (req, res) => {
     try {
         const id = req.body._id
         let obj = await Pagamento.findByIdAndUpdate(id, req.body)
@@ -59,6 +60,6 @@ controller.excluir = async (req, res) => {
         console.error(erro)
         res.status(500).send(erro)
     }
-}
+}*/
 
 module.exports = controller
