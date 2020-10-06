@@ -1,5 +1,6 @@
 const Pedido = require('../models/Pedido')
 const item_pedido = require('./item_pedido')
+const pagamento = require('./pagamento')
 
 const controller = {}
 
@@ -20,7 +21,20 @@ controller.novo = async (req, res) => {
             pedido.item_pedido.push(id)
         }))
 
-        await Pedido.create(pedido)
+        const item = await Pedido.create(pedido)
+        const id_pedido = item.id
+
+        let pag = {
+            body: {
+                data_hora: new Date().toJSON(),
+                status: 'Processando',
+                pedido: id_pedido,
+                tipo: req.body.pagamento.tipo
+            }
+        }
+
+        await pagamento.novo(pag, res)
+
         res.status(201).end()
     }
     catch (erro) {

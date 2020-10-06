@@ -34,7 +34,7 @@ controller.obterUm = async (req, res) => {
 
 }
 
-/*controller.atualizar = async (req, res) => {
+controller.atualizar = async (req, res) => {
     try {
         const id = req.body._id
         let obj = await Pagamento.findByIdAndUpdate(id, req.body)
@@ -48,6 +48,7 @@ controller.obterUm = async (req, res) => {
     }
 }
 
+/*
 controller.excluir = async (req, res) => {
     try {
         const id = req.body._id
