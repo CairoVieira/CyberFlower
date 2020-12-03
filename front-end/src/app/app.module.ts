@@ -10,6 +10,7 @@ import { MainMenuComponent } from './ui/main-menu/main-menu.component';
 import { MainFooterComponent } from './ui/main-footer/main-footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PlantaListComponent } from './planta/planta-list/planta-list.component';
+import { PlantaFormComponent } from './planta/planta-form/planta-form.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { PlantaListComponent } from './planta/planta-list/planta-list.component'
     MainToolbarComponent,
     MainMenuComponent,
     MainFooterComponent,
-    PlantaListComponent
+    PlantaListComponent,
+    PlantaFormComponent
   ],
   imports: [
     BrowserModule,
