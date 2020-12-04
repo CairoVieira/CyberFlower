@@ -11,6 +11,7 @@ import { MainFooterComponent } from './ui/main-footer/main-footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PlantaListComponent } from './planta/planta-list/planta-list.component';
 import { PlantaFormComponent } from './planta/planta-form/planta-form.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { PlantaFormComponent } from './planta/planta-form/planta-form.component'
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

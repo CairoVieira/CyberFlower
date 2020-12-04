@@ -24,7 +24,7 @@
 
 	<ng-container matColumnDef="flores">
 		<th mat-header-cell *matHeaderCellDef> Flores </th>
-		<td mat-cell *matCellDef="let planta"> {{planta.flores}} </td>
+		<td mat-cell *matCellDef="let planta"> {{planta.flores ? "Sim" : "Não"}} </td>
 	</ng-container>
 
 	<ng-container matColumnDef="cor">
@@ -39,12 +39,12 @@
 
 	<ng-container matColumnDef="plantada">
 		<th mat-header-cell *matHeaderCellDef> Plantada </th>
-		<td mat-cell *matCellDef="let planta"> {{planta.plantada}} </td>
+		<td mat-cell *matCellDef="let planta"> {{planta.plantada ? "Sim" : "Não"}} </td>
 	</ng-container>
 
 	<ng-container matColumnDef="comestivel">
 		<th mat-header-cell *matHeaderCellDef> Comestível </th>
-		<td mat-cell *matCellDef="let planta"> {{planta.comestivel}} </td>
+		<td mat-cell *matCellDef="let planta"> {{planta.comestivel ? "Sim" : "Não"}} </td>
 	</ng-container>
 
 	<ng-container matColumnDef="quantidade">

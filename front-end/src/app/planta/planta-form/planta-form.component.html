@@ -1,1 +1,78 @@
-<p>planta-form works!</p>
+<h1>{{title}}</h1>
+
+<form class="std-form" #f="ngForm" (ngSubmit)="salvar(f)">
+  <mat-form-field>
+    <mat-label>Código</mat-label>
+    <input name="codigo" [(ngModel)]="planta.codigo" matInput required
+    placeholder='Informe o código da planta'>
+  </mat-form-field>
+
+   <mat-form-field>
+    <mat-label>Nome</mat-label>
+    <input name="nome" [(ngModel)]="planta.nome" matInput required
+    placeholder='Informe o nome da planta'>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Flores</mat-label>
+    <mat-select name="flores" [(ngModel)]="planta.flores" required>
+    <mat-option *ngFor="let flor of flores" [value]="flor.valor">
+    {{flor.descr}}
+    </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Cor</mat-label>
+    <input name="cor" [(ngModel)]="planta.cor" matInput required
+    placeholder='Informe a cor da planta'>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Quantidade de Regas</mat-label>
+    <input name="quantidade_regas" [(ngModel)]="planta.quantidade_regas" matInput required
+    placeholder='Informe a quantidade de regas' type="number">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Plantada</mat-label>
+    <mat-select name="plantada" [(ngModel)]="planta.plantada" required>
+    <mat-option *ngFor="let plantada of plantadas" [value]="plantada.valor">
+    {{plantada.descr}}
+    </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Comestível</mat-label>
+    <mat-select name="comestivel" [(ngModel)]="planta.comestivel" required>
+    <mat-option *ngFor="let comestivel of comestiveis" [value]="comestivel.valor">
+    {{comestivel.descr}}
+    </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Quantidade</mat-label>
+    <input name="quantidade" [(ngModel)]="planta.quantidade" matInput required
+    placeholder='Informe a quantidade de plantas' type="number">
+  </mat-form-field>
+
+    <mat-form-field>
+    <mat-label>Valor</mat-label>
+    <input name="valor" [(ngModel)]="planta.valor" matInput required
+    placeholder='Informe o valor da planta' type="number">
+  </mat-form-field>
+
+  <mat-toolbar class="form-buttons">
+    <mat-toolbar-row>
+      <button mat-raised-button type="submit" color="accent">
+        Salvar
+      </button>
+      <button mat-raised-button type="button" (click)="voltar(f)">
+        Voltar
+      </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+</form>
