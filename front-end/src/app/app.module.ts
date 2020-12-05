@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { PlantaListComponent } from './planta/planta-list/planta-list.component';
 import { PlantaFormComponent } from './planta/planta-form/planta-form.component';
 import { FormsModule } from '@angular/forms';
+import { PedidoListComponent } from './pedido/pedido-list/pedido-list.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { FormsModule } from '@angular/forms';
     MainMenuComponent,
     MainFooterComponent,
     PlantaListComponent,
-    PlantaFormComponent
+    PlantaFormComponent,
+    PedidoListComponent
   ],
   imports: [
     BrowserModule,

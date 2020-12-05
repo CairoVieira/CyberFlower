@@ -124,7 +124,7 @@ controller.obterUm = async (req, res) => {
 
 controller.excluir = async (req, res) => {
     try {
-
+        if(req.body) {
         await Promise.all(req.body.item_pedido.map(async (item) => {
             const r = {
                 body: item
@@ -140,6 +140,7 @@ controller.excluir = async (req, res) => {
         })
         .catch(erro => res.status(500).send(erro)) 
     }
+}
     catch (erro) {
         console.error(erro)
         res.status(500).send(erro)
