@@ -1,0 +1,69 @@
+<h1>{{title}}</h1>
+
+<form class="std-form" #f="ngForm" (ngSubmit)="salvar(f)">
+  <mat-form-field>
+    <mat-label>Planta</mat-label>
+    <mat-select name="planta" [(ngModel)]="pedido.planta"> 
+    <mat-option *ngFor="let planta of plantas" [value]="planta._id">
+    {{planta.nome}} ({{planta.cor}})
+    </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Quantidade de Plantas</mat-label>
+    <mat-select name="planta" [(ngModel)]="pedido.planta"> 
+    <mat-option *ngFor="let planta of plantas" [value]="planta._id">
+    {{planta.quantidade}}
+    </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Embalagem</mat-label>
+    <mat-select name="embalagem" [(ngModel)]="pedido.embalagem"> 
+    <mat-option *ngFor="let embalagem of embalagens" [value]="embalagem._id">
+    {{embalagem.tipo}} ({{embalagem.cor}}) ({{embalagem.tamanho}})
+    </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Quantidade de emabalagens</mat-label>
+    <mat-select name="embalagem" [(ngModel)]="pedido.embalagem"> 
+    <mat-option *ngFor="let embalagem of embalagens" [value]="embalagem._id">
+    {{embalagem.quantidade}}
+    </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Acessório</mat-label>
+    <mat-select name="acessorio" [(ngModel)]="pedido.acessorio"> 
+    <mat-option *ngFor="let acessorio of acessorios" [value]="acessorio._id">
+    {{acessorio.nome}} ({{acessorio.tipo}})
+    </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Quantidade de acessórios</mat-label>
+    <mat-select name="acessorio" [(ngModel)]="pedido.acessorio"> 
+    <mat-option *ngFor="let acessorio of acessorios" [value]="acessorio._id">
+    {{acessorio.quantidade}}
+    </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-toolbar class="form-buttons">
+    <mat-toolbar-row>
+      <button mat-raised-button type="submit" color="accent">
+        Salvar
+      </button>
+      <button mat-raised-button type="button" (click)="voltar(f)">
+        Voltar
+      </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+</form>

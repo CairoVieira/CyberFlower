@@ -13,6 +13,7 @@ import { PlantaListComponent } from './planta/planta-list/planta-list.component'
 import { PlantaFormComponent } from './planta/planta-form/planta-form.component';
 import { FormsModule } from '@angular/forms';
 import { PedidoListComponent } from './pedido/pedido-list/pedido-list.component';
+import { PedidoFormComponent } from './pedido/pedido-form/pedido-form.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { PedidoListComponent } from './pedido/pedido-list/pedido-list.component'
     MainFooterComponent,
     PlantaListComponent,
     PlantaFormComponent,
-    PedidoListComponent
+    PedidoListComponent,
+    PedidoFormComponent
   ],
   imports: [
     BrowserModule,
