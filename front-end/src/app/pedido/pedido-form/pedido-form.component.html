@@ -3,21 +3,19 @@
 <form class="std-form" #f="ngForm" (ngSubmit)="salvar(f)">
   <mat-form-field>
     <mat-label>Planta</mat-label>
-    <mat-select name="planta" [(ngModel)]="pedido.planta"> 
+    <mat-select name="planta" [(ngModel)]="pedido.planta" (change)="changeQuantidade(pedido.planta)"> 
     <mat-option *ngFor="let planta of plantas" [value]="planta._id">
     {{planta.nome}} ({{planta.cor}})
     </mat-option>
     </mat-select>
   </mat-form-field>
 
-  <mat-form-field>
-    <mat-label>Quantidade de Plantas</mat-label>
-    <mat-select name="planta" [(ngModel)]="pedido.planta"> 
-    <mat-option *ngFor="let planta of plantas" [value]="planta._id">
-    {{planta.quantidade}}
-    </mat-option>
-    </mat-select>
+ <mat-form-field >
+    <mat-label>Quantidade</mat-label>
+    <input name="planta_quantidade" [(ngModel)]="pedido.planta" matInput required type="number" min="0" 
+    placeholder='Informe o nome da planta'>
   </mat-form-field>
+ 
 
   <mat-form-field>
     <mat-label>Embalagem</mat-label>

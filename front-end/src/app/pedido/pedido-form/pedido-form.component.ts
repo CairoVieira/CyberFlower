@@ -15,6 +15,8 @@ import { AcessorioService } from 'src/app/acessorio/acessorio.service';
 })
 export class PedidoFormComponent implements OnInit {
 
+    plata_quatidade: 0
+
     title: string = 'Novo pedido'
 
     pedido: any = {}
@@ -104,6 +106,11 @@ export class PedidoFormComponent implements OnInit {
             result = confirm('Há dados não salvos. Deseja realmente voltar?')
         }
         if (result) this.location.back()
+    }
+
+    changeQuantidade(quantidade: any) {
+        console.log("here: ", quantidade)
+
     }
 
 }
