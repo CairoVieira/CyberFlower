@@ -3,55 +3,56 @@
 <form class="std-form" #f="ngForm" (ngSubmit)="salvar(f)">
   <mat-form-field>
     <mat-label>Planta</mat-label>
-    <mat-select name="planta" [(ngModel)]="pedido.planta"> 
-    <mat-option *ngFor="let planta of plantas" [value]="planta._id">
-    {{planta.nome}} ({{planta.cor}})
-    </mat-option>
+    <mat-select name="planta" [(ngModel)]="pedido.planta" (ngModelChange)="getMaxValuePlantas($event)" required>
+      <mat-option *ngFor="let planta of plantas" [value]="planta._id">
+        {{planta.nome}} {{planta.cor ? "(" + planta.cor + ")" : ''}}
+      </mat-option>
     </mat-select>
   </mat-form-field>
 
-  <mat-form-field>
-    <mat-label>Quantidade de Plantas</mat-label>
-    <mat-select name="planta" [(ngModel)]="pedido.planta"> 
-    <mat-option *ngFor="let planta of plantas" [value]="planta._id">
-    {{planta.quantidade}}
-    </mat-option>
-    </mat-select>
+  <mat-form-field *ngIf="plantasQuantidade >= 0">
+    <mat-label>Quantidade de plantas</mat-label>
+    <input name="quantidadePlanta" type="number" min="0" matInput required max="{{plantasQuantidade}}" required
+      placeholder='Informe a quantidade de plantas' [(ngModel)]="pedido.qtdPlantas">
   </mat-form-field>
 
   <mat-form-field>
     <mat-label>Embalagem</mat-label>
-    <mat-select name="embalagem" [(ngModel)]="pedido.embalagem"> 
-    <mat-option *ngFor="let embalagem of embalagens" [value]="embalagem._id">
-    {{embalagem.tipo}} ({{embalagem.cor}}) ({{embalagem.tamanho}})
-    </mat-option>
+    <mat-select name="embalagem" [(ngModel)]="pedido.embalagem" (ngModelChange)="getMaxValueEmbalagem($event)" required>
+      <mat-option *ngFor="let embalagem of embalagens" [value]="embalagem._id">
+        {{embalagem.tipo}} {{embalagem.cor ? "(" + embalagem.cor + ")" : '' }} {{embalagem.tamanho ? "(" + embalagem.tamanho + ")" : ''}}
+      </mat-option>
     </mat-select>
   </mat-form-field>
 
-  <mat-form-field>
-    <mat-label>Quantidade de emabalagens</mat-label>
-    <mat-select name="embalagem" [(ngModel)]="pedido.embalagem"> 
-    <mat-option *ngFor="let embalagem of embalagens" [value]="embalagem._id">
-    {{embalagem.quantidade}}
-    </mat-option>
-    </mat-select>
+  <mat-form-field *ngIf="embalagensQuantidade >= 0">
+    <mat-label>Quantidade de embalagens</mat-label>
+    <input name="quantidadeEmbalagem" type="number" min="0" matInput required max="{{embalagensQuantidade}}" required
+      placeholder='Informe a quantidade de embalagem' [(ngModel)]="pedido.qtdEmbalagens" >
   </mat-form-field>
 
   <mat-form-field>
     <mat-label>Acessório</mat-label>
-    <mat-select name="acessorio" [(ngModel)]="pedido.acessorio"> 
-    <mat-option *ngFor="let acessorio of acessorios" [value]="acessorio._id">
-    {{acessorio.nome}} ({{acessorio.tipo}})
-    </mat-option>
+    <mat-select name="acessorio" [(ngModel)]="pedido.acessorio" (ngModelChange)="getMaxValueAcessorio($event)" required>
+      <mat-option *ngFor="let acessorio of acessorios" [value]="acessorio._id">
+        {{acessorio.nome}} {{acessorio.tipo ? "(" + acessorio.tipo + ")" : "" }} 
+      </mat-option>
     </mat-select>
   </mat-form-field>
 
+  <mat-form-field *ngIf="acessoriosQuantidade >= 0">
+    <mat-label>Quantidade de Acessórios</mat-label>
+    <input name="quantidadeAcessorio" type="number" min="0" matInput required max="{{acessoriosQuantidade}}" required
+      placeholder='Informe a quantidade de Acessórios' [(ngModel)]="pedido.qtdAcessorios">
+  </mat-form-field>
+
+
   <mat-form-field>
-    <mat-label>Quantidade de acessórios</mat-label>
-    <mat-select name="acessorio" [(ngModel)]="pedido.acessorio"> 
-    <mat-option *ngFor="let acessorio of acessorios" [value]="acessorio._id">
-    {{acessorio.quantidade}}
-    </mat-option>
+    <mat-label>Pagamento</mat-label>
+    <mat-select name="pagamento" [(ngModel)]="pedido.pagamentos" required>
+      <mat-option *ngFor="let pgto of pagamentos" [value]="pgto.tipo">
+        {{pgto.tipo}} 
+      </mat-option>
     </mat-select>
   </mat-form-field>
 

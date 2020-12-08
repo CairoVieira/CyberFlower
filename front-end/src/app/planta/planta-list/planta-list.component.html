@@ -54,7 +54,7 @@
 
 	<ng-container matColumnDef="valor">
 		<th mat-header-cell *matHeaderCellDef> Valor </th>
-		<td mat-cell *matCellDef="let planta"> {{planta.valor}} </td>
+		<td mat-cell *matCellDef="let planta"> {{planta.valor | currency:'BRL':true }} </td>
 	</ng-container>
 
 	<ng-container matColumnDef="editar">

@@ -63,7 +63,7 @@ export class PlantaFormComponent implements OnInit {
                 }
                 this.snackBar.open('Dados salvos com sucesso.', 'Entendi.',
                     { duration: 5000 })
-                this.location.back
+                this.location.back()
             }
 
         }
