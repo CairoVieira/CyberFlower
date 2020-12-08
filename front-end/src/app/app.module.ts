@@ -14,6 +14,7 @@ import { PlantaFormComponent } from './planta/planta-form/planta-form.component'
 import { FormsModule } from '@angular/forms';
 import { PedidoListComponent } from './pedido/pedido-list/pedido-list.component';
 import { PedidoFormComponent } from './pedido/pedido-form/pedido-form.component';
+import { HomeComponent } from './ui/home/home.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { PedidoFormComponent } from './pedido/pedido-form/pedido-form.component'
     PlantaListComponent,
     PlantaFormComponent,
     PedidoListComponent,
-    PedidoFormComponent
+    PedidoFormComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
